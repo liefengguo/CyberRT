@@ -551,8 +551,8 @@ class Install:
         self._cmd("mkdir -p build")
         os.chdir("build")
         self._cmd(
-            "cmake -DCMAKE_INSTALL_PREFIX={} -DBUILD_SHARED_LIBS=ON ..".format(
-                self._install_prefix
+            "cmake -DCMAKE_INSTALL_PREFIX={} -DCMAKE_PREFIX_PATH={} -DBUILD_SHARED_LIBS=ON ..".format(
+                self._install_prefix,self._install_prefix
             )
         )
         self._cmd("make install -j$(($(nproc) - 1))")
